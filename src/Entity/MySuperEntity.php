@@ -2,11 +2,14 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiProperty;
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\MySuperEntityRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=MySuperEntityRepository::class)
+ * @ApiResource()
  */
 class MySuperEntity
 {
@@ -25,6 +28,7 @@ class MySuperEntity
 
     /**
      * @var Attributes
+     * @ApiProperty(attributes={"openapi_context"={"type"="object"}})
      * @ORM\Column(type="attributes_type", nullable=true)
      */
     private $attributes;
@@ -47,8 +51,8 @@ class MySuperEntity
         return $this;
     }
 
-
     /**
+     *
      * @return Attributes
      */
     public function getAttributes(): ?Attributes
